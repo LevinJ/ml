@@ -107,10 +107,8 @@ fprintf('\n');
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
 testsample =[1650,3];
-testsample = testsample - mu;
-testsample(1,1) = testsample(1,1)/sigma(1,1);
-testsample(1,2) = testsample(1,2)/sigma(1,2);
-testsample_norm = [1 testsample];
+testsample_norm = testsample - mu
+testsample_norm = [ones(m, 1) testsample_norm];
 price = testsample_norm*theta; % You should change this
 
 
@@ -120,7 +118,7 @@ fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
          '(using gradient descent):\n $%f\n'], price);
 
 fprintf('Program paused. Press enter to continue.\n');
-%pause;
+pause;
 
 %% ================ Part 3: Normal Equations ================
 
@@ -156,13 +154,7 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-%price = 0; % You should change this
-testsample =[1650,3];
-testsample = testsample - mu;
-testsample(1,1) = testsample(1,1)/sigma(1,1);
-testsample(1,2) = testsample(1,2)/sigma(1,2);
-testsample_norm = [1 testsample];
-price = testsample_norm*theta; % You should change this
+price = 0; % You should change this
 
 
 % ============================================================
