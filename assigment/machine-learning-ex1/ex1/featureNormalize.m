@@ -25,21 +25,24 @@ sigma = zeros(1, size(X, 2));
 %
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
+[nr nc]=size(X)
+mu = mean(X);
+sigma = std(X);
+temp_mu = ones(nr,1) *mu;
+temp_sigma=ones(nr,1) *sigma;
+X_norm=(X - temp_mu) ./ temp_sigma;
 
-num_of_examples = size(X, 1);
-num_of_features = size(X, 2);
-
+%num_of_examples = size(X, 1);
+%num_of_features = size(X, 2);
 %for i = 1:num_of_features
 %    mu(1,i) = mean(X(:,i));
 %    sigma(1,i)=std(X(:,i));
 %end
-mu = mean(X);
-sigma = std(X);
-for i = 1:num_of_features
-    for j = 1:num_of_examples
-        X_norm(j,i) = (X(j,i)-mu(1,i))/sigma(1,i);
-    end
-end
+%for i = 1:num_of_features
+%    for j = 1:num_of_examples
+%        X_norm(j,i) = (X(j,i)-mu(1,i))/sigma(1,i);
+%    end
+%end
 
 
 
