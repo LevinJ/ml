@@ -160,12 +160,9 @@ fprintf('\n');
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
 %price = 0; % You should change this
-testsample =[1650,3];
-testsample = testsample - mu;
-testsample(1,1) = testsample(1,1)/sigma(1,1);
-testsample(1,2) = testsample(1,2)/sigma(1,2);
-testsample_norm = [1 testsample];
-price = testsample_norm*theta; % You should change this
+testsample =[1,1650,3];
+
+price = testsample*theta; % You should change this
 
 
 % ============================================================
