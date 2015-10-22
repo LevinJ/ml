@@ -27,7 +27,7 @@ J = log(g_X_theta') * y + log((1 - g_X_theta)') * (1 -y);
 J = -J / m;
 
 
-grad = X' * (g_X_theta - y);
+grad = (X' * (g_X_theta - y))/m;
 
 
 
