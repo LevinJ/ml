@@ -30,6 +30,10 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+Temp = X * all_theta';
+[B,p] = max(Temp,[],2);
+
+
 
 
 
