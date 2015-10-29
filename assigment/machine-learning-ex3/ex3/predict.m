@@ -17,10 +17,17 @@ p = zeros(size(X, 1), 1);
 %
 % Hint: The max function might come in useful. In particular, the max
 %       function can also return the index of the max element, for more
-%       information see 'help max'. If your examples are in rows, then, you
-%       can use max(A, [], 2) to obtain the max for each row.
+%       information see 'help max'. If your  in rows, then, you
+%       can use max(A, [], 2) to oexamples arebtain the max for each row.
 %
+X = [ones(m,1) X];
+l2temp = sigmoid(Theta1 * X');
+l2 = [ones(1,m); l2temp];
 
+l3 = sigmoid(Theta2 * l2);
+
+[B,ptemp] = max(l3, [], 1);
+p = ptemp';
 
 
 
