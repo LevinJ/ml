@@ -62,6 +62,24 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+for m_index=1:m
+    a1 = X(m_index,:)';
+    a1_bias = [1; a1];
+    a2 = sigmoid(Theta1 * a1_bias);
+    a2_bias = [1 ; a2];
+    h = sigmoid(Theta2 * a2_bias);
+    y_label = [1:num_labels]';
+    y_label = (y(m_index)==y_label);
+    J_temp = -y_label' * log(h) - (1 - y_label') * log(1 -h);
+    J = J + J_temp;  
+end
+
+J = J/m;
+
+reg_term = sum(sum(Theta1(:, 2:end) .^ 2)) + sum(sum(Theta2(:, 2:end) .^ 2));
+reg_term = reg_term * lambda / (2 *m);
+
+J = J + reg_term;
 
 
 
