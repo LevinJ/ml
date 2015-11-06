@@ -63,16 +63,27 @@ Theta2_grad = zeros(size(Theta2));
 %
 
 for m_index=1:m
+    %compute J for each training example
     a1 = X(m_index,:)';
     a1_bias = [1; a1];
-    a2 = sigmoid(Theta1 * a1_bias);
+    z2 = Theta1 * a1_bias;
+    a2 = sigmoid(z2);
     a2_bias = [1 ; a2];
-    h = sigmoid(Theta2 * a2_bias);
+    z3 = Theta2 * a2_bias;
+    h = sigmoid(z3);
     y_label = [1:num_labels]';
     y_label = (y(m_index)==y_label);
     J_temp = -y_label' * log(h) - (1 - y_label') * log(1 -h);
     J = J + J_temp;  
+    %Compute gradient for the theta matrix
+    delta3 = h - y_label;
+    delta2 = Theta2' * delta3 .* sigmoidGradient([1;z2]);
+    
+    Theta1_grad = Theta1_grad + delta2(2:end) * a1_bias';
+    Theta2_grad = Theta2_grad + delta3 * a2_bias';    
 end
+Theta1_grad = Theta1_grad /m;
+Theta2_grad = Theta2_grad /m;
 
 J = J/m;
 
