@@ -147,7 +147,7 @@ fprintf('\nChecking Backpropagation... \n');
 checkNNGradients;
 
 fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+%pause;
 
 
 %% =============== Part 8: Implement Regularization ===============
