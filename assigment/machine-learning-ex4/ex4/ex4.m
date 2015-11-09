@@ -169,7 +169,7 @@ fprintf(['\n\nCost at (fixed) debugging parameters (w/ lambda = 10): %f ' ...
          '\n(this value should be about 0.576051)\n\n'], debug_J);
 
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+%pause;
 
 
 %% =================== Part 8: Training NN ===================
@@ -183,10 +183,12 @@ fprintf('\nTraining Neural Network... \n')
 
 %  After you have completed the assignment, change the MaxIter to a larger
 %  value to see how more training helps.
-options = optimset('MaxIter', 50);
+%options = optimset('MaxIter', 50);
+options = optimset('MaxIter', 500);
 
 %  You should also try different values of lambda
-lambda = 1;
+%lambda = 1;
+lambda = 0;
 
 % Create "short hand" for the cost function to be minimized
 costFunction = @(p) nnCostFunction(p, ...
@@ -206,7 +208,7 @@ Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):en
                  num_labels, (hidden_layer_size + 1));
 
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+%pause;
 
 
 %% ================= Part 9: Visualize Weights =================
@@ -219,7 +221,7 @@ fprintf('\nVisualizing Neural Network... \n')
 displayData(Theta1(:, 2:end));
 
 fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+%pause;
 
 %% ================= Part 10: Implement Predict =================
 %  After training the neural network, we would like to use it to predict
