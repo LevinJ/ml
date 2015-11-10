@@ -20,8 +20,12 @@ grad = zeros(size(theta));
 %
 
 errterm = X * theta - y;
-thetawithoutfirst = theta(2:end)
-J = errterm' * errterm / (2 *m) + lambda *(thetawithoutfirst' * thetawithoutfirst)/(2 *m)
+thetawithoutfirst = theta(2:end);
+J = errterm' * errterm / (2 *m) + lambda *(thetawithoutfirst' * thetawithoutfirst)/(2 *m);
+
+grad = X' * (X * theta - y)/m;
+
+grad(2:end) = grad(2:end) + lambda * theta(2:end)/m;
 
 
 
