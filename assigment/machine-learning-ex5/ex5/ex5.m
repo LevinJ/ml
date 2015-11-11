@@ -218,3 +218,16 @@ end
 
 fprintf('Program paused. Press enter to continue.\n');
 %pause;
+
+%% =========== Part 9: Computing test set error =============
+%  With lambda = 3, compute test set error
+%
+
+lambda = 3;
+[theta] = trainLinearReg(X_poly, y, lambda);
+error_test = linearRegCostFunction(X_poly_test, ytest, theta, 0);
+
+fprintf('Polynomial Regression (lambda = %f)\n\n', lambda);
+fprintf('# Testing set error %f\n', error_test);
+
+
