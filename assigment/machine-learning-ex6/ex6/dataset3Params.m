@@ -23,8 +23,34 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
+% set up list to store C, Sigma, and corresponding error rate list
+CVec = [0.01, 0.03, 0.1, 1, 3, 10, 30];
+sigmaVec = [0.01, 0.03, 0.1, 1, 3, 10, 30];
+errRate = zeros(length(CVec), length(sigmaVec));
+
+% Try out each pair of C and Sigma, and get corresponding error rate on
+% validation set
+
+for i=1:length(CVec)
+    for j=1:length(sigmaVec)
+        C= CVec(i);
+        sigma = sigmaVec(j);
+        model = svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
+        predictions = svmPredict(model, Xval);
+        errRate(i,j) = mean( double (predictions ~= yval));
+    end
+end
 
 
+% Return the C and sigma which correspons to lowset prediction error rate
+% on validation set
+[r,c]=find(errRate==min(min(errRate)));
+if length(r) > 1
+    r = r(1);
+    c = c(1);
+end 
+C = CVec(r);
+sigma = sigmaVec(c);
 
 
 
