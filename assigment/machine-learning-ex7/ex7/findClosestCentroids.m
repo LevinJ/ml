@@ -21,7 +21,17 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+for i=1:size(X,1)
+    distance = -1;
+    for j = 1:K
+        tempdistance = sum( (X(i,:) - centroids(j,:)) .^ 2);
+        if (distance == -1 || tempdistance < distance)
+            idx(i) = j;
+            distance = tempdistance;
+        end
+    end
+        
+end
 
 
 
