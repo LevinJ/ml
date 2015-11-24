@@ -27,7 +27,17 @@ centroids = zeros(K, n);
 %
 
 
-
+for k = 1:K
+    k_arr = idx==k;
+    count = sum(k_arr);
+    row_sum = zeros(1,n);
+    for i=1:m
+        if(k_arr(i) == 1)
+            row_sum = row_sum + X(i,:)
+        end
+    end
+    centroids(k,:) = row_sum/count
+end
 
 
 
