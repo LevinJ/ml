@@ -101,7 +101,7 @@ end
 hold off
 
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+%pause;
 
 %% =============== Part 4: Loading and Visualizing Face Data =============
 %  We start the exercise by first loading and visualizing the dataset.
@@ -116,7 +116,7 @@ load ('ex7faces.mat')
 displayData(X(1:100, :));
 
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+%pause;
 
 %% =========== Part 5: PCA on Face Data: Eigenfaces  ===================
 %  Run PCA and visualize the eigenvectors which are in this case eigenfaces
@@ -133,10 +133,10 @@ fprintf(['\nRunning PCA on face dataset.\n' ...
 [U, S] = pca(X_norm);
 
 %  Visualize the top 36 eigenvectors found
-displayData(U(:, 1:36)');
+displayData(U(:, 1:100)');
 
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+%pause;
 
 
 %% ============= Part 6: Dimension Reduction for Faces =================
@@ -151,7 +151,7 @@ fprintf('The projected data Z has a size of: ')
 fprintf('%d ', size(Z));
 
 fprintf('\n\nProgram paused. Press enter to continue.\n');
-pause;
+%pause;
 
 %% ==== Part 7: Visualization of Faces after PCA Dimension Reduction ====
 %  Project images to the eigen space using the top K eigen vectors and 
@@ -176,7 +176,7 @@ title('Recovered faces');
 axis square;
 
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+%pause;
 
 
 %% === Part 8(a): Optional (ungraded) Exercise: PCA for Visualization ===
@@ -215,7 +215,7 @@ figure;
 scatter3(X(sel, 1), X(sel, 2), X(sel, 3), 10, colors);
 title('Pixel dataset plotted in 3D. Color shows centroid memberships');
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+%pause;
 
 %% === Part 8(b): Optional (ungraded) Exercise: PCA for Visualization ===
 % Use PCA to project this cloud to 2D for visualization
@@ -232,4 +232,4 @@ figure;
 plotDataPoints(Z(sel, :), idx(sel), K);
 title('Pixel dataset plotted in 2D, using PCA for dimensionality reduction');
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+%pause;
