@@ -22,7 +22,21 @@ sigma2 = zeros(n, 1);
 %
 
 
+for feature=1:n
+    temp_mu_sum = 0;
+    for example=1:m
+        temp_mu_sum = temp_mu_sum + X(example,feature);
+    end
+    mu(feature) = temp_mu_sum/m;
+end
 
+for feature=1:n
+    temp_sigma_sum = 0;
+    for example=1:m
+        temp_sigma_sum = temp_sigma_sum + (X(example,feature)-mu(feature)) ^2;
+    end
+    sigma2(feature) = temp_sigma_sum/m;
+end
 
 
 
