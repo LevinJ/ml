@@ -48,6 +48,7 @@ Theta_grad = zeros(size(Theta));
 
 temp =  ((X * Theta')  - Y) .^ 2;
 J = sum(sum(R .* temp))/2;
+J = J + lambda/2 *(sum(sum(Theta .^ 2)) +  sum(sum(X .^ 2)));
 
 
 
@@ -81,7 +82,7 @@ idx = find(R(movie,:) == 1);
 Thetatemp = Theta(idx,:);
 Ytemp = Y(movie, idx);
 
-X_grad(movie,:) = (X(movie,:) * Thetatemp' - Ytemp) * Thetatemp;
+X_grad(movie,:) = (X(movie,:) * Thetatemp' - Ytemp) * Thetatemp + lambda * X(movie,:);
 
 end
 
@@ -91,7 +92,7 @@ idx = find(R(:,user) == 1);
 Xvalid = X(idx,:);
 Yvalid = Y(idx, user);
 
-Theta_grad(user,:) = (Xvalid * Theta(user,:)' - Yvalid)' * Xvalid;
+Theta_grad(user,:) = (Xvalid * Theta(user,:)' - Yvalid)' * Xvalid + lambda  * Theta(user,:);
 end
 
 

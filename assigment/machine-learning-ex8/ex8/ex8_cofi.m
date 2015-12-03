@@ -80,7 +80,7 @@ fprintf('\nChecking Gradients (without regularization) ... \n');
 checkCostFunction;
 
 fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+%pause;
 
 
 %% ========= Part 4: Collaborative Filtering Cost Regularization ========
@@ -97,7 +97,7 @@ fprintf(['Cost at loaded parameters (lambda = 1.5): %f '...
          '\n(this value should be about 31.34)\n'], J);
 
 fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+%pause;
 
 
 %% ======= Part 5: Collaborative Filtering Gradient Regularization ======
