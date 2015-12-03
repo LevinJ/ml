@@ -60,9 +60,39 @@ J = sum(sum(R .* temp))/2;
 % end
 % J = J/2;
 
+% for movie=1:num_movies
+%      for user=1:num_users
+%          if R(movie,user) == 1
+%              X_grad(movie,:) = X_grad(movie,:) + (Theta(user,:) * X(movie,:)' - Y(movie,user)) * Theta(user,:);
+%          end
+%      end
+% end
+% 
+% for user=1:num_users
+%     for movie=1:num_movies
+%         if R(movie,user) == 1
+%             Theta_grad(user,:) = Theta_grad(user,:) + (Theta(user,:) * X(movie,:)' - Y(movie,user))  * X(movie,:);
+%         end
+%     end
+% end
 
+for movie=1:num_movies
+idx = find(R(movie,:) == 1);
+Thetatemp = Theta(idx,:);
+Ytemp = Y(movie, idx);
 
+X_grad(movie,:) = (X(movie,:) * Thetatemp' - Ytemp) * Thetatemp;
 
+end
+
+for user=1:num_users
+    
+idx = find(R(:,user) == 1);
+Xvalid = X(idx,:);
+Yvalid = Y(idx, user);
+
+Theta_grad(user,:) = (Xvalid * Theta(user,:)' - Yvalid)' * Xvalid;
+end
 
 
 
